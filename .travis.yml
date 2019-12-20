@@ -1,5 +1,9 @@
+sudo: required
 services:
  - docker
+
+env:
+ - YARN_GPG=no
 
 before_install:
  - gem install blunder
