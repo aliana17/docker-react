@@ -1,0 +1,9 @@
+sudo: required
+services:
+ - docker
+
+before_install:
+ - docker build -t anchal/docker-react -f Dockerfile.dev .
+
+script:
+ - docker run anchal/docker-react npm run test -- --coverage
