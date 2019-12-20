@@ -1,13 +1,13 @@
-sudo: required
+language: ruby
+
 services:
  - docker
 
-env:
- - YARN_GPG=no
-
 before_install:
- - gem install blunder
  - docker build -t anchal/docker-react -f Dockerfile.dev .
+ - docker run anchal/docker-react npm run test -- --coverage
+ - docker ps -a
+
 
 script:
- - docker run anchal/docker-react npm run test -- --coverage
+ - bundle exec rake test
